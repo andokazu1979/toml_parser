@@ -14,7 +14,7 @@ class TOMLParser:
         ########################################
 
         # Hash
-        self.pat_hash = re.compile(u'([\w\d]+)\s*=\s*([\'\"\[]?[/\-\w\d.\s,\'\_\(\){}:ぁ-んァ-ン一-龥]+[\'\"\]]?)\s*\n')
+        self.pat_hash = re.compile(u'([\w\d]+)\s*=\s*([\'\"\[]?[/\-\w\d.\s,\'\_\(\){}:ぁ-んァ-ン一-龥：、−「」=]+[\'\"\]]?)\s*\n')
 
         # Table
         self.pat_table = re.compile(r'^\[([\-\w\d.]+)\]$')
@@ -29,7 +29,7 @@ class TOMLParser:
         self.pat_float = re.compile(r'^([\d.]+)$')
 
         # String
-        self.pat_string = re.compile(u'^([\'\"][/\-.\w\d\_\(\)\s{}:ぁ-んァ-ン一-龥]+[\'\"])$')
+        self.pat_string = re.compile(u'^([\'\"][/\-.\w\d\_\(\)\s{}:ぁ-んァ-ン一-龥：、−「」=]+[\'\"])$')
 
         # Array
         self.pat_array = re.compile(r'^\[([/\-\w\d.\s,\']+)\]$')
