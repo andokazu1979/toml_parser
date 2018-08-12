@@ -119,11 +119,24 @@ class TOMLParser:
         else:
             self.set_hash(tname, key, val, d[tmp])
 
+    def show(self, d, tname=[]):
+        if isinstance(d, OrderedDict):
+            for item in d.items():
+                if isinstance(item[1], OrderedDict):
+                    tname.append(item[0])
+                    print("[{0}]".format('.'.join(tname)))
+                    self.show(item[1], tname)
+                elif isinstance(item[1], list) and isinstance(item[1][0], OrderedDict):
+                    tname.append(item[0])
+                    print("[[{0}]]".format('.'.join(tname)))
+                    for item_ in item[1]:
+                        self.show(item_)
+                else:
+                    print "{0} : {1}".format(item[0], item[1])
+            if len(tname) != 0:
+                tname.pop()
+
 if __name__ == '__main__':
     obj = TOMLParser()
     obj.parse(sys.argv[1])
-    for item in obj.dict_root:
-        print "[{0}]".format(item)
-        for item2 in obj.dict_root[item]:
-            print "{0} : {1}".format(item2, obj.dict_root[item][item2])
-        print ""
+    obj.show(obj.dict_root)
