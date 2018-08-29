@@ -32,7 +32,7 @@ class TOMLParser:
         self.pat_string = re.compile(u'^([\'\"][/\-.\w\d\_\(\)\s{}:ぁ-んァ-ンー一-龥：、。−「」=%]+[\'\"])$')
 
         # Array
-        self.pat_array = re.compile(r'^\[([/\-\w\d.\s,\']+)\]$')
+        self.pat_array = re.compile(u'^\[([/\-\w\d.\s,\'\_\(\)\s{}:ぁ-んァ-ンー一-龥：、。−「」=%]+)\]$')
 
         # Comment
         self.pat_comment = re.compile(r'^#.*')
