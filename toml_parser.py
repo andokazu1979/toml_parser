@@ -26,7 +26,7 @@ class TOMLParser:
         self.pat_int = re.compile(r'^-?(\d+)$')
 
         # Float
-        self.pat_float = re.compile(r'^([\d.]+)$')
+        self.pat_float = re.compile(r'^(-?[\d.]+)$')
 
         # String
         self.pat_string = re.compile(u'^([\'\"][/\-.\w\d\_\(\)\s{}:ぁ-んァ-ンー一-龥：、。−「」=%]+[\'\"])$')
