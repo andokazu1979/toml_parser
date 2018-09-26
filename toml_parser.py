@@ -80,6 +80,8 @@ class TOMLParser:
                         for i, item in enumerate(val):
                             if self.pat_int.search(item):
                                 val[i] = int(item)
+                            elif self.pat_float.search(item):
+                                val[i] = float(item)
                             elif self.pat_string.search(item):
                                 val[i] = item[1:-1]
                     # self.dict_root[table_name][key] = val
